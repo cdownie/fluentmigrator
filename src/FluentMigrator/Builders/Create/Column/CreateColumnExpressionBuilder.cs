@@ -67,6 +67,13 @@ namespace FluentMigrator.Builders.Create.Column
 			return this;
 		}
 
+
+		public ICreateColumnOptionSyntax Identity(int seed)
+		{
+			Expression.Column.Seed = seed;
+			return Identity();
+		}
+
 		public ICreateColumnOptionSyntax Indexed()
 		{
 			Expression.Column.IsIndexed = true;
@@ -135,5 +142,7 @@ namespace FluentMigrator.Builders.Create.Column
 		{
 			return Expression.Column;
 		}
+
+
 	}
 }

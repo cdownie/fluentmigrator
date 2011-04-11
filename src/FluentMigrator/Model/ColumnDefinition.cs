@@ -44,6 +44,7 @@ namespace FluentMigrator.Model
 		public virtual bool IsNullable { get; set; }
 		public virtual bool IsUnique { get; set; }
 		public virtual string TableName { get; set; }
+		public virtual int Seed { get; set; }
 
 		public void ApplyConventions(IMigrationConventions conventions)
 		{

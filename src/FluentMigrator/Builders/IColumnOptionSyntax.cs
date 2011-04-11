@@ -27,6 +27,7 @@ namespace FluentMigrator.Builders
 		TNext WithDefaultValue(object value);
 		TNext ForeignKey();
 		TNext Identity();
+		TNext Identity(int seed);
 		TNext Indexed();
 		TNext PrimaryKey();
 		TNext PrimaryKey(string primaryKeyName);

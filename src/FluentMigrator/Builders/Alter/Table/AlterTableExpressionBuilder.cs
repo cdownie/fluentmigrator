@@ -105,6 +105,11 @@ namespace FluentMigrator.Builders.Alter.Table
             return this;
         }
 
+		  public IAlterTableColumnOptionOrAddColumnOrAlterColumnSyntax Identity(int seed)
+		  {
+			  throw new System.NotImplementedException();
+		  }
+
         public IAlterTableColumnOptionOrAddColumnOrAlterColumnSyntax Indexed()
         {
             CurrentColumn.IsIndexed = true;
@@ -173,5 +178,7 @@ namespace FluentMigrator.Builders.Alter.Table
         {
             return CurrentColumn;
         }
-    }
+
+
+	 }
 }

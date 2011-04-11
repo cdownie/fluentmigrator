@@ -21,7 +21,7 @@ namespace FluentMigrator.Runner.Generators.SqlServer
 
 		protected override string FormatIdentity(ColumnDefinition column)
 		{
-			return column.IsIdentity ? "IDENTITY(1,1)" : string.Empty;
+			return column.IsIdentity ? "IDENTITY(" + (column.Seed > 0 ? column.Seed.ToString(): "1") + ",1)" : string.Empty;
 		}
 
         protected override string FormatSystemMethods(SystemMethods systemMethod)

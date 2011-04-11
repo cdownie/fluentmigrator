@@ -77,6 +77,11 @@ namespace FluentMigrator.Builders.Alter.Column
 			return this;
 		}
 
+		public IAlterColumnOptionSyntax Identity(int seed)
+		{
+			throw new System.NotImplementedException();
+		}
+
 		public IAlterColumnOptionSyntax Indexed()
 		{
 			Expression.Column.IsIndexed = true;
@@ -144,5 +149,6 @@ namespace FluentMigrator.Builders.Alter.Column
 		{
 			return Expression.Column;
 		}
+
 	}
 }

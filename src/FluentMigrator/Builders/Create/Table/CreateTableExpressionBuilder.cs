@@ -70,6 +70,12 @@ namespace FluentMigrator.Builders.Create.Table
 			return this;
 		}
 
+		public ICreateTableColumnOptionOrWithColumnSyntax Identity(int seed)
+		{
+			CurrentColumn.Seed = seed;
+			return Identity();			
+		}
+
 		public ICreateTableColumnOptionOrWithColumnSyntax Indexed()
 		{
 			CurrentColumn.IsIndexed = true;
@@ -138,5 +144,7 @@ namespace FluentMigrator.Builders.Create.Table
 		{
 			return CurrentColumn;
 		}
+		
+
 	}
 }

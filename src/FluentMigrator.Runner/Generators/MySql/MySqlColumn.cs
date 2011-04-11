@@ -12,7 +12,7 @@ namespace FluentMigrator.Runner.Generators.MySql
 
 		protected override string FormatIdentity(ColumnDefinition column)
 		{
-			return column.IsIdentity ? "AUTO_INCREMENT" : string.Empty;
+			return column.IsIdentity ? "AUTO_INCREMENT" + (column.Seed > 0 ? " =" + column.Seed: string.Empty)  : string.Empty;
 		}
 
 		protected override string FormatSystemMethods(SystemMethods systemMethod)
