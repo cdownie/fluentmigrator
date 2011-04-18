@@ -67,6 +67,14 @@ namespace FluentMigrator.Tests.Unit.Generators
             return expression;
         }
 
+		  public static CreateTableExpression GetCreateTableWithAutoIncrementWithSeedExpression()
+		  {
+			  var expression = new CreateTableExpression { TableName = TestTableName1 };
+			  expression.Columns.Add(new ColumnDefinition { Name = TestColumnName1, IsIdentity = true, Seed = 42, Type = DbType.Int32 });
+			  expression.Columns.Add(new ColumnDefinition { Name = TestColumnName2, Type = DbType.Int32 });
+			  return expression;
+		  }
+
         public static CreateTableExpression GetCreateTableWithMultiColumnPrimaryKeyExpression()
         {
             var expression = new CreateTableExpression { TableName = TestTableName1 };

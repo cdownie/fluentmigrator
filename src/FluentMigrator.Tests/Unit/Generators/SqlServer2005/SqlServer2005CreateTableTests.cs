@@ -78,16 +78,6 @@ namespace FluentMigrator.Tests.Unit.Generators.SqlServer
         }
 
         [Test]
-        public   void CanCreateTableWithPrimaryKeyWithCustomSchema()
-        {
-            var expression = GeneratorTestHelper.GetCreateTableWithPrimaryKeyExpression();
-            expression.SchemaName = "TestSchema";
-            var sql = generator.Generate(expression);
-            sql.ShouldBe(
-                "CREATE TABLE [TestSchema].[TestTable1] ([TestColumn1] NVARCHAR(255) NOT NULL, [TestColumn2] INT NOT NULL, PRIMARY KEY ([TestColumn1]))");
-        }
-
-        [Test]
         public   void CanCreateTableWithIdentityWithDefaultSchema()
         {
             var expression = GeneratorTestHelper.GetCreateTableWithAutoIncrementExpression();
@@ -95,6 +85,15 @@ namespace FluentMigrator.Tests.Unit.Generators.SqlServer
             sql.ShouldBe(
                 "CREATE TABLE [dbo].[TestTable1] ([TestColumn1] INT NOT NULL IDENTITY(1,1), [TestColumn2] INT NOT NULL)");
         }
+
+		  [Test]
+		  public void CanCreateTableWithIdentityWithSeedWithDefaultSchema()
+		  {
+			  var expression = GeneratorTestHelper.GetCreateTableWithAutoIncrementWithSeedExpression();
+			  var sql = generator.Generate(expression);
+			  sql.ShouldBe(
+					"CREATE TABLE [dbo].[TestTable1] ([TestColumn1] INT NOT NULL IDENTITY(42,1), [TestColumn2] INT NOT NULL)");
+		  }
 
         [Test]
         public   void CanCreateTableWithIdentityWithCustomSchema()
@@ -105,6 +104,16 @@ namespace FluentMigrator.Tests.Unit.Generators.SqlServer
             sql.ShouldBe(
                 "CREATE TABLE [TestSchema].[TestTable1] ([TestColumn1] INT NOT NULL IDENTITY(1,1), [TestColumn2] INT NOT NULL)");
         }
+
+		  [Test]
+		  public void CanCreateTableWithIdentityWithSeedWithCustomSchema()
+		  {
+			  var expression = GeneratorTestHelper.GetCreateTableWithAutoIncrementWithSeedExpression();
+			  expression.SchemaName = "TestSchema";
+			  var sql = generator.Generate(expression);
+			  sql.ShouldBe(
+					"CREATE TABLE [TestSchema].[TestTable1] ([TestColumn1] INT NOT NULL IDENTITY(42,1), [TestColumn2] INT NOT NULL)");
+		  }
 
         [Test]
         public   void CanCreateTableWithNullableFieldWithDefaultSchema()
