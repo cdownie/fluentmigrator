@@ -294,7 +294,7 @@ namespace FluentMigrator.Tests.Unit.Generators.SqlServer
             var expression = GeneratorTestHelper.GetCreateUniqueIndexExpression();
             expression.Index.IsClustered = true;
             var sql = generator.Generate(expression);
-            sql.ShouldBe("CREATE CLUSTERED UNIQUE INDEX [TestIndex] ON [dbo].[TestTable1] ([TestColumn1] ASC)");
+            sql.ShouldBe("CREATE UNIQUE CLUSTERED INDEX [TestIndex] ON [dbo].[TestTable1] ([TestColumn1] ASC)");
         }
 
         [Test]
@@ -304,7 +304,7 @@ namespace FluentMigrator.Tests.Unit.Generators.SqlServer
             expression.Index.SchemaName = "TestSchema";
             expression.Index.IsClustered = true;
             var sql = generator.Generate(expression);
-            sql.ShouldBe("CREATE CLUSTERED UNIQUE INDEX [TestIndex] ON [TestSchema].[TestTable1] ([TestColumn1] ASC)");
+            sql.ShouldBe("CREATE UNIQUE CLUSTERED INDEX [TestIndex] ON [TestSchema].[TestTable1] ([TestColumn1] ASC)");
         }
 
         [Test]
@@ -313,7 +313,7 @@ namespace FluentMigrator.Tests.Unit.Generators.SqlServer
             var expression = GeneratorTestHelper.GetCreateUniqueMultiColumnIndexExpression();
             expression.Index.IsClustered = true;
             var sql = generator.Generate(expression);
-            sql.ShouldBe("CREATE CLUSTERED UNIQUE INDEX [TestIndex] ON [dbo].[TestTable1] ([TestColumn1] ASC, [TestColumn2] DESC)");
+            sql.ShouldBe("CREATE UNIQUE CLUSTERED INDEX [TestIndex] ON [dbo].[TestTable1] ([TestColumn1] ASC, [TestColumn2] DESC)");
         }
 
         [Test]
@@ -323,7 +323,7 @@ namespace FluentMigrator.Tests.Unit.Generators.SqlServer
             expression.Index.SchemaName = "TestSchema";
             expression.Index.IsClustered = true;
             var sql = generator.Generate(expression);
-            sql.ShouldBe("CREATE CLUSTERED UNIQUE INDEX [TestIndex] ON [TestSchema].[TestTable1] ([TestColumn1] ASC, [TestColumn2] DESC)");
+            sql.ShouldBe("CREATE UNIQUE CLUSTERED INDEX [TestIndex] ON [TestSchema].[TestTable1] ([TestColumn1] ASC, [TestColumn2] DESC)");
         }
 
         [Test]

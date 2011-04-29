@@ -257,7 +257,7 @@ namespace FluentMigrator.Tests.Unit.Generators
             return expression;
         }
 
-        public static AlterColumnExpression GetAlterTableExpression()
+        public static AlterColumnExpression GetAlterColumnExpression()
         {
             var expression = new AlterColumnExpression();
             expression.TableName = TestTableName1;
